@@ -1,0 +1,300 @@
+/* ==========================================================================
+   Link Manager – Frontend Styles
+   ========================================================================== */
+
+/* URL-Box
+   ========================================================================== */
+.lm-url-box {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    flex-wrap: wrap;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    background: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    font-size: .9rem;
+}
+
+.lm-url-label {
+    font-weight: 600;
+    color: #555;
+    white-space: nowrap;
+}
+
+.lm-url-link {
+    flex: 1;
+    word-break: break-all;
+    color: #0366d6;
+}
+
+/* Meta-Bar (Kategorien + Bewertung)
+   ========================================================================== */
+.lm-meta-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #eee;
+}
+
+/* Kategorie-Badges
+   ========================================================================== */
+.lm-cat-badge {
+    display: inline-block;
+    padding: .2em .65em;
+    margin: .15em;
+    background: #0366d6;
+    color: #fff !important;
+    border-radius: 3px;
+    font-size: .78rem;
+    text-decoration: none;
+    line-height: 1.6;
+    transition: background .2s;
+}
+
+.lm-cat-badge:hover {
+    background: #024ea2;
+}
+
+/* Bewertungs-Widget
+   ========================================================================== */
+.lm-ratings {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.lm-vote {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .4rem .85rem;
+    border: 1px solid #d1d5da;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-size: .95rem;
+    transition: background .15s, border-color .15s;
+}
+
+.lm-vote:hover:not(:disabled) {
+    background: #f0f5ff;
+    border-color: #0366d6;
+}
+
+.lm-vote:disabled,
+.lm-vote.disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.lm-vote-up:not(:disabled):hover { color: #2da44e; border-color: #2da44e; }
+.lm-vote-down:not(:disabled):hover { color: #d73a49; border-color: #d73a49; }
+
+.lm-score {
+    font-weight: 700;
+    font-size: 1.1rem;
+    min-width: 2ch;
+    text-align: center;
+    color: #333;
+}
+
+.lm-voted-note {
+    font-size: .8rem;
+    color: #888;
+}
+
+/* Button (generisch)
+   ========================================================================== */
+.lm-btn {
+    display: inline-block;
+    padding: .45rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: .9rem;
+    cursor: pointer;
+    border: none;
+    transition: opacity .15s;
+}
+
+.lm-btn:hover { opacity: .85; }
+
+.lm-btn-primary {
+    background: #0366d6;
+    color: #fff;
+}
+
+.lm-btn-visit {
+    background: #2da44e;
+    color: #fff !important;
+    white-space: nowrap;
+}
+
+/* Vorschlagsformular
+   ========================================================================== */
+.lm-submit-wrap {
+    max-width: 640px;
+}
+
+.lm-form .lm-field {
+    margin-bottom: 1.25rem;
+}
+
+.lm-form label {
+    display: block;
+    margin-bottom: .35rem;
+    font-weight: 600;
+    font-size: .9rem;
+}
+
+.lm-form input[type="text"],
+.lm-form input[type="url"],
+.lm-form input[type="email"],
+.lm-form textarea {
+    width: 100%;
+    padding: .55rem .75rem;
+    border: 1px solid #d1d5da;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color .2s;
+}
+
+.lm-form input:focus,
+.lm-form textarea:focus {
+    outline: none;
+    border-color: #0366d6;
+    box-shadow: 0 0 0 3px rgba(3,102,214,.15);
+}
+
+.lm-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem .75rem;
+}
+
+.lm-check-label {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* Notices
+   ========================================================================== */
+.lm-notice {
+    padding: .85rem 1.25rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: .95rem;
+}
+
+.lm-notice-success {
+    background: #dcfce7;
+    border: 1px solid #86efac;
+    color: #166534;
+}
+
+.lm-notice-error {
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+}
+
+/* Archiv-Grid (Shortcode [link_archive])
+   ========================================================================== */
+.lm-archive-grid {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax( 280px, 1fr ) );
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.lm-card {
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .2s;
+}
+
+.lm-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,.1);
+}
+
+.lm-card-thumb img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+.lm-card-body {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.lm-card-title {
+    font-size: 1rem;
+    margin: 0 0 .35rem;
+    line-height: 1.4;
+}
+
+.lm-card-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.lm-card-title a:hover { text-decoration: underline; }
+
+.lm-card-url {
+    font-size: .8rem;
+    color: #888;
+    margin: 0 0 .5rem;
+}
+
+.lm-card-excerpt {
+    font-size: .87rem;
+    color: #555;
+    flex: 1;
+    margin: 0 0 .75rem;
+}
+
+.lm-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+
+.lm-card-score {
+    font-weight: 700;
+    font-size: .9rem;
+    color: #555;
+}
+
+/* Responsive
+   ========================================================================== */
+@media ( max-width: 600px ) {
+    .lm-archive-grid {
+        grid-template-columns: 1fr;
+    }
+    .lm-meta-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .lm-url-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
