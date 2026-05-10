@@ -99,7 +99,7 @@ class Screenshot {
         $attachment_id = media_handle_sideload( $file_array, $post_id );
 
         if ( is_wp_error( $attachment_id ) ) {
-            @unlink( $tmp );
+            wp_delete_file( $tmp );
             error_log( '[LinkManager] Screenshot sideload failed: ' . $attachment_id->get_error_message() );
             return;
         }

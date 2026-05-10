@@ -94,11 +94,17 @@ class Submissions {
             wp_send_json_error( [ 'message' => 'Spam erkannt.' ] );
         }
 
+        // Rate-Limiting: max. 1 Einreichung pro IP alle 5 Minuten
+        $rate_key = 'lm_submit_' . md5( $_SERVER['REMOTE_ADDR'] ?? '' );
+        if ( get_transient( $rate_key ) ) {
+            wp_send_json_error( [ 'message' => __( 'Bitte warte etwas, bevor du erneut einen Vorschlag einreichst.', 'link-manager' ) ] );
+        }
+
         $title = sanitize_text_field( wp_unslash( $_POST['lm_s_title'] ?? '' ) );
         $url   = esc_url_raw( wp_unslash( $_POST['lm_s_url']   ?? '' ) );
         $desc  = sanitize_textarea_field( wp_unslash( $_POST['lm_s_desc']  ?? '' ) );
         $name  = sanitize_text_field( wp_unslash( $_POST['lm_s_name']  ?? '' ) );
-        $email = sanitize_email( $_POST['lm_s_email'] ?? '' );
+        $email = sanitize_email( wp_unslash( $_POST['lm_s_email'] ?? '' ) );
         $cats  = array_map( 'absint', $_POST['lm_s_categories'] ?? [] );
 
         if ( ! $title || ! $url ) {
@@ -128,6 +134,8 @@ class Submissions {
         if ( ! $inserted ) {
             wp_send_json_error( [ 'message' => __( 'Datenbankfehler. Bitte versuche es später.', 'link-manager' ) ] );
         }
+
+        set_transient( $rate_key, 1, 5 * MINUTE_IN_SECONDS );
 
         // Admin-Benachrichtigung
         $this->notify_admin( $title, $url, $name );
@@ -178,10 +186,19 @@ class Submissions {
     }
 
     public function count_pending(): int {
+        $cached = get_transient( 'lm_pending_count' );
+        if ( false !== $cached ) {
+            return (int) $cached;
+        }
+
         global $wpdb;
-        return (int) $wpdb->get_var(
-            "SELECT COUNT(*) FROM {$wpdb->prefix}lm_submissions WHERE status = 'pending'"
+        $count = (int) $wpdb->get_var(
+            $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}lm_submissions WHERE status = %s", 'pending' )
         );
+
+        set_transient( 'lm_pending_count', $count, 5 * MINUTE_IN_SECONDS );
+
+        return $count;
     }
 
     /**
@@ -238,6 +255,8 @@ class Submissions {
             [ '%d' ]
         );
 
+        delete_transient( 'lm_pending_count' );
+
         // Einreicher benachrichtigen (falls E-Mail vorhanden)
         if ( $sub->submitter_email ) {
             wp_mail(
@@ -256,7 +275,7 @@ class Submissions {
 
     public function reject( int $submission_id ): bool {
         global $wpdb;
-        return (bool) $wpdb->update(
+        $result = (bool) $wpdb->update(
             $wpdb->prefix . 'lm_submissions',
             [
                 'status'      => 'rejected',
@@ -267,5 +286,9 @@ class Submissions {
             [ '%s', '%s', '%d' ],
             [ '%d' ]
         );
+
+        delete_transient( 'lm_pending_count' );
+
+        return $result;
     }
 }

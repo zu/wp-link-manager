@@ -169,6 +169,10 @@ class Admin {
         $id = absint( $_GET['id'] ?? 0 );
         check_admin_referer( 'lm_approve_' . $id );
 
+        if ( ! $id ) {
+            wp_die( esc_html__( 'Ungültige Anfrage.', 'link-manager' ) );
+        }
+
         if ( ! current_user_can( 'edit_posts' ) ) {
             wp_die( esc_html__( 'Keine Berechtigung.', 'link-manager' ) );
         }
@@ -186,6 +190,10 @@ class Admin {
     public function handle_reject(): void {
         $id = absint( $_GET['id'] ?? 0 );
         check_admin_referer( 'lm_reject_' . $id );
+
+        if ( ! $id ) {
+            wp_die( esc_html__( 'Ungültige Anfrage.', 'link-manager' ) );
+        }
 
         if ( ! current_user_can( 'edit_posts' ) ) {
             wp_die( esc_html__( 'Keine Berechtigung.', 'link-manager' ) );

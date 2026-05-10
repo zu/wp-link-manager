@@ -90,7 +90,7 @@ class Frontend {
             $args['tax_query'] = [ [
                 'taxonomy' => Taxonomy::SLUG,
                 'field'    => 'slug',
-                'terms'    => sanitize_text_field( $atts['category'] ),
+                'terms'    => sanitize_key( $atts['category'] ),
             ] ];
         }
 

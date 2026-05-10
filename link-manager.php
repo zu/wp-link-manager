@@ -5,7 +5,7 @@
  * Primary Branch:    main
  * Plugin URI:        https://github.com/zu/wp-link-manager
  * Description:       Custom Post Type "Link" mit Kategorien, Bewertungen, Kommentaren, Vorschlägen und automatischen Screenshots.
- * Version:           1.0.3
+ * Version:           1.0.4
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Author:            Christian Zumbrunnen
