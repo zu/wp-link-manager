@@ -3,7 +3,7 @@
  * Plugin Name:       Link Manager
  * Plugin URI:        https://github.com/your-username/link-manager
  * Description:       Custom Post Type "Link" mit Kategorien, Bewertungen, Kommentaren, Vorschlägen und automatischen Screenshots.
- * Version:           1.0.0
+ * Version:           1.0.3
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Author:            Christian Zumbrunnen
