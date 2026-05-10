@@ -26,6 +26,19 @@ class Installer {
         flush_rewrite_rules();
     }
 
+    /**
+     * Wird bei jedem Request geprüft: führt Schema-Migrationen durch,
+     * wenn die gespeicherte Plugin-Version von LM_VERSION abweicht.
+     */
+    public static function maybe_upgrade(): void {
+        if ( get_option( 'lm_version' ) === LM_VERSION ) {
+            return;
+        }
+
+        self::create_tables();
+        update_option( 'lm_version', LM_VERSION );
+    }
+
     private static function create_tables(): void {
         global $wpdb;
         $charset = $wpdb->get_charset_collate();

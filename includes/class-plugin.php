@@ -20,6 +20,7 @@ final class Plugin {
     public Frontend    $frontend;
 
     private function __construct() {
+        Installer::maybe_upgrade();
         $this->load_textdomain();
         $this->init_components();
     }

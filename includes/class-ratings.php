@@ -141,11 +141,8 @@ class Ratings {
     // -------------------------------------------------------------------------
 
     private function get_voter_ip(): string {
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR']
-              ?? $_SERVER['REMOTE_ADDR']
-              ?? '0.0.0.0';
-        // Nur erste IP bei kommasep. Liste
-        return trim( explode( ',', $ip )[0] );
+        $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+        return filter_var( $ip, FILTER_VALIDATE_IP ) ? $ip : '0.0.0.0';
     }
 
     /**
