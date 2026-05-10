@@ -2,6 +2,7 @@
 /**
  * Plugin Name:       Link Manager
  * GitHub Plugin URI: https://github.com/zu/wp-link-manager
+ * Primary Branch:    main
  * Plugin URI:        https://github.com/zu/wp-link-manager
  * Description:       Custom Post Type "Link" mit Kategorien, Bewertungen, Kommentaren, Vorschlägen und automatischen Screenshots.
  * Version:           1.0.3
