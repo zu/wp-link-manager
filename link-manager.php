@@ -6,7 +6,7 @@
  * Version:           1.0.0
  * Requires at least: 6.0
  * Requires PHP:      8.0
- * Author:            Your Name
+ * Author:            Christian Zumbrunnen
  * License:           GPL v2 or later
  * Text Domain:       link-manager
  * Domain Path:       /languages
