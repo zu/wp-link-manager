@@ -1,7 +1,8 @@
 <?php
 /**
  * Plugin Name:       Link Manager
- * Plugin URI:        https://github.com/your-username/link-manager
+ * GitHub Plugin URI: https://github.com/zu/wp-link-manager
+ * Plugin URI:        https://github.com/zu/wp-link-manager
  * Description:       Custom Post Type "Link" mit Kategorien, Bewertungen, Kommentaren, Vorschlägen und automatischen Screenshots.
  * Version:           1.0.3
  * Requires at least: 6.0
@@ -15,7 +16,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Plugin-Konstanten
-define( 'LM_VERSION',     '1.0.0' );
+define( 'LM_VERSION',     '1.0.4' );
 define( 'LM_PLUGIN_DIR',  plugin_dir_path( __FILE__ ) );
 define( 'LM_PLUGIN_URL',  plugin_dir_url( __FILE__ ) );
 define( 'LM_PLUGIN_FILE', __FILE__ );
