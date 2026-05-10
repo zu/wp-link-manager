@@ -35,11 +35,12 @@ link-manager/
 
 ## Installation
 
-1. Ordner `link-manager` nach `/wp-content/plugins/` hochladen
+1. Ordner `wp-link-manager` nach `/wp-content/plugins/` hochladen
 2. Plugin in WordPress aktivieren
 3. Die DB-Tabellen werden automatisch erstellt
 
 ## Shortcodes
+## als nächstes werde ich versuchen aus den Shortcodes Blocks machen zu lassen....
 
 | Shortcode | Beschreibung |
 |---|---|
